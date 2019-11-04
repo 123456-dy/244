@@ -3,7 +3,7 @@
     margin:0;padding: 0;
 }
 body{
-    background-color: #bae7ff;
+    background-color:rgb(198, 209, 195);
 }
 h2{
     text-align: center;
@@ -48,11 +48,11 @@ hr{
     color: #262626;
     font-weight: bold;
 }
-/* banner轮播图区域 */
+/* banner轮播图区域 */ 
 .banner{
     width: 1519px;
     height: 600px;
-  /*   background-color: deeppink; */
+    /* background-color: deeppink; */
     margin: 0 auto;
     position: relative;
     overflow: hidden;
@@ -111,13 +111,35 @@ hr{
     margin: 0 10px;
     border-radius: 20px;
 }
+
+/* .banner{
+    width: 100%;
+   margin: 0 auto;
+   overflow: hidden;
+}
+.mv{
+   height: 400px;
+   width: 100%;
+}
+
+.carousel-inner{
+    overflow: hidden;  
+  }
+
+  .left{
+    margin: auto 0!important;
+}
+.right{
+    margin: auto 0!important;
+} */
+
 /* 服务范围 */
 .service{
     margin-top: 50px;
 }
 .content_service{
     height: 250px;
-    background-color: #91d5ff;
+    background-color: rgb(198, 209, 195);
    /*  margin-top: 50px; */
 }
 .content_service .service_title{
@@ -133,7 +155,7 @@ hr{
 .content_service .service_content li img{
     width: 200px;
     height: 200px;
-    background-color: #91d5ff;
+    background-color: rgb(198, 209, 195);
 }
 .content_service .service_content img:hover{
     background-color: #8c8c8c;
@@ -145,10 +167,10 @@ hr{
     /* height: 1600px; */
   /*   background-color: chartreuse; */
 }
-.content_member .member_title{
+/* .content_member .member_title{
    /*  text-align: center; */
     /* background-color: red; */
-}
+} */
 /*成员介绍主体*/
 .content_member .content_main{
     height: 1568px;
@@ -249,19 +271,19 @@ hr{
 .footer{
     width: 100%;
     height: 400px;
-    background-color:#69c0ff;
+    background-color:#a3c6df;
     margin: 0 auto;
 }
 .footer .footer_top{
     width: 1200px;
     height: 300px;
-    background-color: #69c0ff;
+    background-color: #a3c6df;
     margin: 0 auto;
 }
 .footer_top .footer1,.footer2,.footer3,.footer4{
     width: 300px;
     text-align: center;
-    background-color: #69c0ff;
+    background-color: #a3c6df;
     display: inline-block;
     float: left;
 }
@@ -276,7 +298,7 @@ hr{
 .footer .footer_bottom{
     width: 1200px;
     height: 50px;
-    background-color: #69c0ff;
+    background-color:#a3c6df;
     margin: 0 auto;
     margin-top: 50px;
 }
