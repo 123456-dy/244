@@ -6,197 +6,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
-
-    <script type="text/javascript" src="jquery-1.12.4.js"></script>
-
-    <script>
-
-        $(function () {
-            // 添加键盘事件
-            $(".content").keypress(function () {
-                 //获取文本输入框的内容
-                 var val = $('.content').val();
-                //将文本框的内容赋值给val后，将文本框的内容清除，以便用户下一次输入
-                $('.content').val('');
-                //将文本框内容用div包裹起来，便于后续处理
-                var $content = $('<div class="text">' + val + '</div>');
-                // 设置随机颜色
-                var r = Math.floor(Math.random() * 254)
-                var g = Math.floor(Math.random() * 254)
-                var b = Math.floor(Math.random() * 254)
-                // 设置随机字体大小
-                var f = Math.floor(Math.random() * 40)
-
-                //获取弹幕墙对象
-                $screen = $(document.getElementById("qiang"));
-                //设置弹幕体出现时的上边距，为任意值
-                var top = Math.random() * $screen.height() + 40;
-                //设置弹幕体的上边距和左边距
-                $content.css({
-                    top: top + "px",
-                    right: 80,
-                    color: "rgb(" + r + "," + g + "," + b + ")",
-                    fontSize: f + "px"
-                });
-                // function randomcolor(){
-
-                //     return'#'+('00000'+(Math.random()*0x1000000 << 0).toString(16)).slice(-6);
-                // }
-                //将弹幕体添加到弹幕墙中
-                $('.dm').append($content);
-                //弹幕体从左端移动到最右侧，时间为8秒，然后直接删除该元素
-                $content.animate({
-                    right: $screen.width() + 80 - $content.width()
-                }, 8000, function () {
-                    $(this).remove();
-                });
-            });
-
-            //设置“发送”按钮点击事件，将弹幕体显示在弹幕墙上
-            $('.send').click(function () {
-                //获取文本输入框的内容
-                var val = $('.content').val();
-                //将文本框的内容赋值给val后，将文本框的内容清除，以便用户下一次输入
-                $('.content').val('');
-                //将文本框内容用div包裹起来，便于后续处理
-                var $content = $('<div class="text">' + val + '</div>');
-                // 设置随机颜色
-                var r = Math.floor(Math.random() * 254)
-                var g = Math.floor(Math.random() * 254)
-                var b = Math.floor(Math.random() * 254)
-                // 设置随机字体大小
-                var f = Math.floor(Math.random() * 40)
-
-                //获取弹幕墙对象
-                $screen = $(document.getElementById("qiang"));
-                //设置弹幕体出现时的上边距，为任意值
-                var top = Math.random() * $screen.height() + 40;
-                //设置弹幕体的上边距和左边距
-                $content.css({
-                    top: top + "px",
-                    right: 80,
-                    color: "rgb(" + r + "," + g + "," + b + ")",
-                    fontSize: f + "px"
-                });
-                //将弹幕体添加到弹幕墙中
-                $('.dm').append($content);
-                //弹幕体从左端移动到最右侧，时间为8秒，然后直接删除该元素
-                $content.animate({
-                    right: $screen.width() + 80 - $content.width()
-                }, 8000, function () {
-                    $(this).remove();
-                });
-            });
-            //设置“清屏”点击事件，清除弹幕墙中的所有内容
-            $('.clear').click(function () {
-                $('.dm').empty();
-            });
-        });
-
-
-
-    </script>
-
-
-    <style type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-
-        .aa {
-            background-color: floralwhite;
-            padding: 40px 80px 80px;
-        }
-
-        #qiang {
-            background-color: rgb(219, 230, 217);
-            width: 100%;
-            height: 500px;
-            border: 1px solid rgb(229, 229, 229);
-            font-size: 14px;
-        }
-
-        .content {
-            border: 1px solid rgb(204, 204, 204);
-            border-radius: 3px;
-            width: 320px;
-            height: 35px;
-            font-size: 14px;
-            margin-top: 30px;
-
-        }
-
-        .send {
-            border: 1px solid rgb(230, 80, 30);
-            color: rgb(230, 80, 0);
-            border-radius: 3px;
-            text-align: center;
-            padding: 0;
-            height: 35px;
-            line-height: 35px;
-            font-size: 14px;
-            width: 159px;
-            background-color: white;
-        }
-
-        .clear {
-            border: 1px solid;
-            color: black;
-            border-radius: 3px;
-            text-align: center;
-            padding: 0;
-            height: 35px;
-            line-height: 35px;
-            font-size: 14px;
-            width: 159px;
-            background-color: burlywood;
-        }
-
-        .edit {
-            margin: 20px;
-            text-align: center;
-        }
-
-        .text {
-            position: absolute;
-        }
-
-
-
-        .dm {
-            margin: 30px;
-        }
-    </style>
-
-
+    <link rel="stylesheet" href="style/danmu.css">
 </head>
 
 <body>
-
-    <div class="aa">
-        <div id="qiang">
-            <span
-                style="text-align: center;display:block;padding: 0;margin: 0;font-size: 22px; color: indianred;">弹幕墙</span>
-            <div class="dm">
-                <!-- <div>text message</div> -->
+    <div id="container">
+        <div id="content"></div>
+        <div id="footer">
+            <div class="f-input">
+                <input id="input" type="text" placeholder="你想哔哔啥？">
+            </div>
+            <div class="f-buttom">
+                <input id="btn" type="button" value="发送">
+                <input id="clear" type="button" value="清屏">
             </div>
         </div>
-        <div class="edit">
-            <p>
-                <input placeholder="欢迎吐槽" class="content" type="text" />
-            </p>
-            <p>
-                <input type="button" class="send" value="发送" />
-                <input type="button" class="clear" value="清除" />
-            </p>
-        </div>
     </div>
-
-       
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 键盘事件
+            $("#input").keypress(function () {
+                let val = $("#input").val()
+                // 设置随机颜色
+                let r = Math.floor(Math.random() * 254)
+                let g = Math.floor(Math.random() * 254)
+                let b = Math.floor(Math.random() * 254)
+                // 设置随机字体大小
+                let f = Math.floor(Math.random() * 40)
+                // 设置随机高
+                let t = Math.floor(Math.random() * 450)
+                // 设置随机速度
+                let s = Math.floor(Math.random() * 5000)
+                // console.log(s)
+                let content = $("<div class='clear'>" + val + "</div>")
+                // 设置随机样式
+                content.css({
+                    "position": "absolute",
+                    "color": "rgb(" + r + "," + g + "," + b + ")",
+                    "font-size": f + "px",
+                    "top": t + "px",
+                    "right": 0
+                })
+                $("#container").append(content)
+                content.animate({
+                    left: 0
+                }, s, function () {
+                    $(this).remove()
+                })
+            });
+            // 清屏
+            $("#clear").click(function () {
+                $(".clear").empty()
+            })
+            // 发送弹幕
+            $("#btn").click(function () {
+                let val = $("#input").val()
+                if (val == "") {
+                    alert("请输入吐槽内容啊！")
+                } else {
+                    // 设置随机颜色
+                    let r = Math.floor(Math.random() * 254)
+                    let g = Math.floor(Math.random() * 254)
+                    let b = Math.floor(Math.random() * 254)
+                    // 设置随机字体大小
+                    let f = Math.floor(Math.random() * 40)
+                    // 设置随机高
+                    let t = Math.floor(Math.random() * 450)
+                    // 设置随机速度
+                    let s = Math.floor(Math.random() * 5000)
+                    // console.log(s)
+                    let content = $("<div class='clear'>" + val + "</div>")
+                    // 设置随机样式
+                    content.css({
+                        "position": "absolute",
+                        "color": "rgb(" + r + "," + g + "," + b + ")",
+                        "font-size": f + "px",
+                        "top": t + "px",
+                        "right": 0
+                    })
+                    $("#container").append(content)
+                    content.animate({
+                        left: 0
+                    }, s, function () {
+                        $(this).remove()
+                    })
+                }
+            })
+        });
+    </script>
 </body>
 
 </html>
